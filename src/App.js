@@ -1,25 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import {Stars} from "./FirstTask/stars";
+import {Listing} from "./SecondTask/listing";
+import dataJson from "./SecondTask/data.json";
+
 
 function App() {
+  let isStars = false;
+
+  const data = JSON.parse(JSON.stringify(dataJson));
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      { isStars ? <Stars count={3} /> : <Listing items={data} /> }
+    </>
   );
 }
+
 
 export default App;
