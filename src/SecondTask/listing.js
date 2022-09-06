@@ -4,7 +4,11 @@ import PropTypes, { func } from "prop-types";
 function Listing({items}) {
 
     var html = items.map((i) => {
-        let title = i.title?.length > 50 ? i.title.substring(50) + "..." : i.title;
+        if (i.state == "removed") {
+            return null;
+        }
+
+        let title = i.title.length > 50 ? i.title.substring(50) + "..." : i.title;
         let price = getFormattedPrice(i.currency_code, i.price);
         let quantityClassName = getQuantityClassName(i.quantity);
 
@@ -13,7 +17,7 @@ function Listing({items}) {
                 <div className="item">
                     <div className="item-image">
                     <a href={i.url}>
-                        <img src={i?.MainImage?.url_570xN}/>
+                        <img src={i.MainImage.url_570xN}/>
                     </a>
                     </div>
                     <div className="item-details">
